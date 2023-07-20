@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service{% endblock %}
+
+{% block body %}
+<h1>Service</h1>
+
+<div class="row">
+{% for worker in service.workers %}
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <a href="{{ path('app_workers_show', {id: worker.id})}}">
+						<img class="card-img-top" src={{worker.photo}} alt="Card image cap">
+					</a>
+                <h5 class="card-title">{{ worker.firstname }} {{ worker.lastname }}</h5>
+                <p class="card-text">
+                    Worker ID: {{ worker.id }}<br>
+                    City: {{ worker.city }}
+                </p>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="col">
+        <p>no records found</p>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}
