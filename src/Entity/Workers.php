@@ -39,6 +39,9 @@ class Workers
     #[ORM\Column(length: 255)]
     private ?string $numberPhone = null;
 
+    #[ORM\Column]
+    private bool $followed = true;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +139,18 @@ class Workers
     public function setNumberPhone(string $numberPhone): self
     {
         $this->numberPhone = $numberPhone;
+
+        return $this;
+    }
+
+    public function isFollowed(): ?bool
+    {
+        return $this->followed;
+    }
+
+    public function setFollowed(bool $followed): self
+    {
+        $this->followed = $followed;
 
         return $this;
     }
