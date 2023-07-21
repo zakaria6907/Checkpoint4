@@ -4,23 +4,29 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Service index</h1>
-	<div class="row">
-		{% for service in services %}
-			<div class="col-sm-4">
-				<div class="card" style="width: 18rem;">
-					<a href="{{ path('app_service_show', {id: service.id})}}">
-						<img class="card-img-top" src={{service.photo}} alt="Card image cap">
-					</a>
-					<div class="card-body">
-						<h5 class="card-title">{{ service.name }}</h5>
-					</div>
-				</div>
-			</div>
-		{% else %}
-			<div class="col">
-				<p>no records found</p>
-			</div>
-		{% endfor %}
-	</div>
+<div class="d-flex justify-content-center align-items-center">
+    <hr class="my-auto trait" style="width: 50px; border-width: 2px;">
+    <h1 class="px-2 mb-4 text-info">Services</h1>
+    <hr class="my-auto trait" style="width: 50px; border-width: 2px;">
+</div>
+<div class="row">
+    {% for service in services %}
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 mt-4">
+        <div class="text-center">
+            <a href="{{ path('app_service_show', {id: service.id})}}">
+                <img class="rounded-circle border border-4 border-info transition" src={{service.photo}} alt="Service image" style="width:150px; height:150px; object-fit:cover;">
+            </a>
+            <div class="pt-2">
+                <h5>{{ service.name }}</h5>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col">
+        <p>no service found</p>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
+                
+

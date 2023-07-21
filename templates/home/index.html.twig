@@ -9,12 +9,12 @@
 		<div class="col d-flex flex-column mb-4 align-items-center">
 			<h1 class = "display-1 fw-bold text-color">
 				Need Craftsman's Services ?</h1>
-			<P>
+			<P class = "fw-bold display-6">
 				WorkersSpace is the right place for craftsman and self-employed people to meet with people or companies that need their services
 			</p>
-			<button type="button" class="btn btn-color rounded-pill">Search</button>
+			<a type="button" class="btn btn-color rounded-pill" href="{{ path('app_service_index') }}">Search</a>
 		</div>
-		<div class="col d-flex flex-column mb-4 position-relative">
+		<div class="col d-flex flex-column position-relative">
 			<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" fill="#0A4D68" class="bi bi-circle-fill align-self-center mt-5" viewbox="0 0 16 16">
 				<circle cx="8" cy="8" r="8"/>
 			</svg>
@@ -22,5 +22,4 @@
 		</div>
 	</div>
 </div>
-
 {% endblock %}

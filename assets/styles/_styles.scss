@@ -20,4 +20,12 @@ body {
     height: 700px; /* adjust this as needed */
 }
 
+.transition{
+    transition: transform 0.2s ease-in-out;
+}
+
+.transition:hover {
+    transform: scale(1.05)
+}
+
 

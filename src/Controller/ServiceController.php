@@ -25,25 +25,6 @@ class ServiceController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_service_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ServiceRepository $serviceRepository): Response
-    {
-        $service = new Service();
-        $form = $this->createForm(ServiceType::class, $service);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $serviceRepository->save($service, true);
-
-            return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('service/new.html.twig', [
-            'service' => $service,
-            'form' => $form,
-        ]);
-    }
-
     #[Route('/{id}', name: 'app_service_show', methods: ['GET'])]
     public function show(Service $service, WorkersRepository $workersRepository): Response
     {
@@ -54,31 +35,4 @@ class ServiceController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_service_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Service $service, ServiceRepository $serviceRepository): Response
-    {
-        $form = $this->createForm(ServiceType::class, $service);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $serviceRepository->save($service, true);
-
-            return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('service/edit.html.twig', [
-            'service' => $service,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_service_delete', methods: ['POST'])]
-    public function delete(Request $request, Service $service, ServiceRepository $serviceRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$service->getId(), $request->request->get('_token'))) {
-            $serviceRepository->remove($service, true);
-        }
-
-        return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
-    }
 }

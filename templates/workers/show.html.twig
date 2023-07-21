@@ -3,44 +3,24 @@
 {% block title %}Workers{% endblock %}
 
 {% block body %}
-    <h1>Workers</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ worker.id }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
-                <td>{{ worker.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
-                <td>{{ worker.lastname }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ worker.city }}</td>
-            </tr>
-            <tr>
-                <th>Prise</th>
-                <td>{{ worker.prise }}</td>
-            </tr>
-            <tr>
-                <th>Experience</th>
-                <td>{{ worker.experience }}</td>
-            </tr>
-            <tr>
-                <th>NumberPhone</th>
-                <td>{{ worker.numberPhone }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_workers_index') }}">back to list</a>
+<div class="container d-flex align-items-center justify-content-center vh-100">
+    <div class="row w-100">
+        <!-- Information Section -->
+        <div class="col-md-6 ">
+            <h2 class="mb-4 fw-bold display-6 ">{{ worker.firstname }} {{ worker.lastname }}</h2>
+            <p class="mb-4"><strong>City :</strong> {{ worker.city }}</p>
+            <p class="mb-4"><strong>Diagnostic Price :</strong> {{ worker.prise }} euro</p>
+            <p class="mb-4"><strong>Experience :</strong> {{ worker.experience }} Ans</p>
+            <p class="mb-4"><strong>Number Phone :</strong> {{ worker.numberPhone }}</p>
+        </div>
 
-    <a href="{{ path('app_workers_edit', {'id': worker.id}) }}">edit</a>
+        <!-- Image Section -->
+        <div class="col-md-6 text-center">
+            <img src="{{ worker.photo }}" class="img-fluid" alt="{{ worker.firstname }} {{ worker.lastname }}" style="max-width: auto; height: 500px;">
+        </div>
+    </div>
+</div>
 
-    {{ include('workers/_delete_form.html.twig') }}
 {% endblock %}

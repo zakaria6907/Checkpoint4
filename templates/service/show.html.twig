@@ -3,29 +3,31 @@
 {% block title %}Service{% endblock %}
 
 {% block body %}
-<h1>Service</h1>
-
-<div class="row">
-{% for worker in service.workers %}
-    <div class="col-sm-4">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-            <a href="{{ path('app_workers_show', {id: worker.id})}}">
-						<img class="card-img-top" src={{worker.photo}} alt="Card image cap">
-					</a>
+<div class="d-flex justify-content-center align-items-center">
+    <hr class="my-auto" style="width: 50px; border-width: 2px;">
+    <h1 class="px-2 mb-4 text-info">{{service.name}}</h1>
+    <hr class="my-auto" style="width: 50px; border-width: 2px;">
+</div>
+<div class="row m-4">
+    {% for worker in service.workers %}
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex">
+        <div class="card h-100" style="width: 18rem;">
+            <div class="card-body shadow border border-4 border-info ">
+                <a href="{{ path('app_workers_show', {id: worker.id})}}">
+                    <img class="card-img-top transition" src={{worker.photo}} alt="Card image cap" style="width:260px; height:150px;">
+                </a>
                 <h5 class="card-title">{{ worker.firstname }} {{ worker.lastname }}</h5>
                 <p class="card-text">
-                    Worker ID: {{ worker.id }}<br>
                     City: {{ worker.city }}
                 </p>
             </div>
         </div>
     </div>
-{% else %}
+    {% else %}
     <div class="col">
-        <p>no records found</p>
+        <p>no workers found</p>
     </div>
-{% endfor %}
+    {% endfor %}
 </div>
 
 {% endblock %}
