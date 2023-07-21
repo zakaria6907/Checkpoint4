@@ -1,0 +1,31 @@
+{{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': true}}) }}
+<div class="container py-5">
+	<div class="row">
+		<div class="col-md-12">
+			<h2 class="text-center text-info mb-4">Veuillez remplir ce formulaire</h2>
+			<div class="row">
+				<div class="col-md-6 mx-auto">
+					<div class="card border-secondary">
+						<div class="card-body shadow">
+							<div class="form-group">
+								{{ form_label(form.object, 'Object', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+								{{ form_widget(form.object, {'attr': {'class': 'form-control shadow border border-2 '}}) }}
+								{{ form_errors(form.object) }}
+							</div>
+
+							<div class="form-group">
+								{{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+								{{ form_widget(form.description, {'attr': {'class': 'form-control shadow border border-2'}}) }}
+								{{ form_errors(form.description) }}
+							</div>
+							<div class="form-group d-flex justify-content-center align-items-center">
+								<button class="btn btn-outline-info btn-lg float-right m-4 shadow">{{ button_label|default('Save') }}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{ form_end(form) }}
